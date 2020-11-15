@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+
 public protocol NetworkingJSONDecodable {
     /// The method you declare your JSON mapping in.
     static func decode(_ json: Any) throws -> Self
