@@ -17,7 +17,7 @@ public struct NetworkingParser {
             let data = resourceData(from: json, keypath: keypath)
             return try T.decode(data)
         } catch (let error) {
-            throw ParsingError.withError(error)
+            throw error
         }
     }
 
@@ -30,7 +30,7 @@ public struct NetworkingParser {
                 try T.decode($0)
             }.compactMap { $0 }
         } catch (let error) {
-            throw ParsingError.withError(error)
+            throw error
         }
     }
 
