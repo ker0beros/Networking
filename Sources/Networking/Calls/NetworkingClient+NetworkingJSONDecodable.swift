@@ -78,6 +78,7 @@ public extension NetworkingJSONDecodable where Self: Decodable {
 
     static func decode(_ json: Any) throws -> Self {
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         let data = try JSONSerialization.data(withJSONObject: json, options: [])
         let model = try decoder.decode(Self.self, from: data)
         return model

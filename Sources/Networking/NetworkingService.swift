@@ -129,7 +129,9 @@ public extension NetworkingService {
 extension Encodable {
     
     public func asParams() throws -> Params {
-        let data = try JSONEncoder().encode(self)
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        let data = try encoder.encode(self)
         guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? Params else {
             throw EncodingError.invalidValue("Encodable", EncodingError.Context(codingPath: [], debugDescription: "Could not cast JSON content to Params", underlyingError: nil))
         }
